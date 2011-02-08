@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "windows-1252"?>
+<jnlp spec="1.0+" codebase="http://localhost:8080" href="novarep.jnlp">
+   <information>
+      <title>Nova Location </title>
+      <vendor>CIRB - CIBG</vendor>
+       <description>Nova Location Proof of Concept</description>
+   </information>
+   <security>
+      <all-permissions/>
+   </security>
+   <resources>
+      <j2se version="1.6+"/>
+       <jar href="novarep.client-1.0.jar" />
+       <jar href="guava-r07.jar" />
+   </resources>
+   <application-desc main-class="irisnet.nova.location.client.BootClass" />
+</jnlp>
