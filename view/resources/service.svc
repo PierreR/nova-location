@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="SearchAddressService"
+                  targetNamespace="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:tns="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06"
+                  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+                  xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+    <wsp:Policy wsu:Id="WSHttpBinding_ISearchAddressService_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsaw:UsingAddressing/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/Imports">
+            <xsd:import schemaLocation="http://staging.brugis.irisnet.be/SearchAddress/service.svc?xsd=xsd2"
+                        namespace="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06"/>
+            <xsd:import schemaLocation="http://staging.brugis.irisnet.be/SearchAddress/service.svc?xsd=xsd3"
+                        namespace="http://brugis.irisnet.be/Brugis/SearchAddress/DataContract/2010/06"/>
+            <xsd:import schemaLocation="http://staging.brugis.irisnet.be/SearchAddress/service.svc?xsd=xsd0"
+                        namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xsd:import schemaLocation="http://staging.brugis.irisnet.be/SearchAddress/service.svc?xsd=xsd1"
+                        namespace="http://schemas.datacontract.org/2004/07/Intergraph.ServiceFramework.Contracts"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ISearchAddressService_GetAddress_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAddress"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetAddress_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAddressResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetAddress_SearchAddressServiceFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q1:SearchAddressServiceFault"
+                   xmlns:q1="http://brugis.irisnet.be/Brugis/SearchAddress/DataContract/2010/06"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetAddressByZipCode_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAddressByZipCode"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetAddressByZipCode_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAddressByZipCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetAddressByZipCode_SearchAddressServiceFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q2:SearchAddressServiceFault"
+                   xmlns:q2="http://brugis.irisnet.be/Brugis/SearchAddress/DataContract/2010/06"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetStreets_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetStreets"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetStreets_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetStreetsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetStreets_SearchAddressServiceFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q3:SearchAddressServiceFault"
+                   xmlns:q3="http://brugis.irisnet.be/Brugis/SearchAddress/DataContract/2010/06"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetMunicipalities_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetMunicipalities"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetMunicipalities_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetMunicipalitiesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISearchAddressService_GetMunicipalities_SearchAddressServiceFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q4:SearchAddressServiceFault"
+                   xmlns:q4="http://brugis.irisnet.be/Brugis/SearchAddress/DataContract/2010/06"/>
+    </wsdl:message>
+    <wsdl:portType name="ISearchAddressService">
+        <wsdl:operation name="GetAddress">
+            <wsdl:input
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddress"
+                    message="tns:ISearchAddressService_GetAddress_InputMessage"/>
+            <wsdl:output
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddressResponse"
+                    message="tns:ISearchAddressService_GetAddress_OutputMessage"/>
+            <wsdl:fault
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddressSearchAddressServiceFaultFault"
+                    name="SearchAddressServiceFaultFault"
+                    message="tns:ISearchAddressService_GetAddress_SearchAddressServiceFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAddressByZipCode">
+            <wsdl:input
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddressByZipCode"
+                    message="tns:ISearchAddressService_GetAddressByZipCode_InputMessage"/>
+            <wsdl:output
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddressByZipCodeResponse"
+                    message="tns:ISearchAddressService_GetAddressByZipCode_OutputMessage"/>
+            <wsdl:fault
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddressByZipCodeSearchAddressServiceFaultFault"
+                    name="SearchAddressServiceFaultFault"
+                    message="tns:ISearchAddressService_GetAddressByZipCode_SearchAddressServiceFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetStreets">
+            <wsdl:input
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetStreets"
+                    message="tns:ISearchAddressService_GetStreets_InputMessage"/>
+            <wsdl:output
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetStreetsResponse"
+                    message="tns:ISearchAddressService_GetStreets_OutputMessage"/>
+            <wsdl:fault
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetStreetsSearchAddressServiceFaultFault"
+                    name="SearchAddressServiceFaultFault"
+                    message="tns:ISearchAddressService_GetStreets_SearchAddressServiceFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetMunicipalities">
+            <wsdl:input
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetMunicipalities"
+                    message="tns:ISearchAddressService_GetMunicipalities_InputMessage"/>
+            <wsdl:output
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetMunicipalitiesResponse"
+                    message="tns:ISearchAddressService_GetMunicipalities_OutputMessage"/>
+            <wsdl:fault
+                    wsaw:Action="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetMunicipalitiesSearchAddressServiceFaultFault"
+                    name="SearchAddressServiceFaultFault"
+                    message="tns:ISearchAddressService_GetMunicipalities_SearchAddressServiceFaultFault_FaultMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_ISearchAddressService" type="tns:ISearchAddressService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetAddress">
+            <soap:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddress"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetAddressByZipCode">
+            <soap:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddressByZipCode"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetStreets">
+            <soap:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetStreets"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetMunicipalities">
+            <soap:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetMunicipalities"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WSHttpBinding_ISearchAddressService" type="tns:ISearchAddressService">
+        <wsp:PolicyReference URI="#WSHttpBinding_ISearchAddressService_policy"/>
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetAddress">
+            <soap12:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddress"
+                    style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap12:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetAddressByZipCode">
+            <soap12:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetAddressByZipCode"
+                    style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap12:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetStreets">
+            <soap12:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetStreets"
+                    style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap12:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetMunicipalities">
+            <soap12:operation
+                    soapAction="http://brugis.irisnet.be/Brugis/SearchAddress/ServiceContract/2010/06/ISearchAddressService/GetMunicipalities"
+                    style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SearchAddressServiceFaultFault">
+                <soap12:fault name="SearchAddressServiceFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SearchAddressService">
+        <wsdl:port name="BasicHttpBinding_ISearchAddressService" binding="tns:BasicHttpBinding_ISearchAddressService">
+            <soap:address location="http://staging.brugis.irisnet.be/SearchAddress/service.svc/soap"/>
+        </wsdl:port>
+        <wsdl:port name="WSHttpBinding_ISearchAddressService" binding="tns:WSHttpBinding_ISearchAddressService">
+            <soap12:address location="http://staging.brugis.irisnet.be/SearchAddress/service.svc/soap12"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>http://staging.brugis.irisnet.be/SearchAddress/service.svc/soap12</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

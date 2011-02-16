@@ -1,9 +1,15 @@
+
 #frontEnd {
     height: 460px;
     width: 400px;
     position: relative;
 
 }
+
+#exec img:hover {
+	cursor: pointer;
+}
+
 #exec {
     position: absolute;
     bottom: 0;

@@ -2,25 +2,38 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <link href="res/location.css" rel="stylesheet" type="text/css"/>
+    <link href="location.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script type="text/javascript" src="map.js"></script>
+    <script type="text/javascript" src="res/soapclient.js"></script>
     <script type="text/javascript">
-        $("#execid").click(
-                          function() {
-                              $.ajax({
-                                  type: "GET",
-                                  url: "http://localhost:8080/location",
-                                  data: "name=Pierre",
-                                  success: function(data) {
-                                      alert("Data send back and forth: " + data.name);
-                                  },
-                                  error: function(data, textStatus) {
-                                      alert("What is wrong: " + textStatus);
-                                  }
-                              });
-                          });
+        var address = {};
+        address.street = {};
+        address.street.name = "Rue de la Loi";
+        address.street.postCode = "1000";
+        address.number = 12;
+
+        function getXYCoord() {
+            console.log("About to send a post request to the server");
+            var pl = new SOAPClientParameters(),
+                url = "http://localhost:8000/gislb/WSGeoLoc/Localization";
+            pl.add("language", "fr");
+            pl.add("address", address)
+            SOAPClient.invoke(url, "getXYCoord", pl, true, _brugwsCallBack);
+
+        }
+        function _brugwsCallBack(data) {
+            console.log(data);
+        }
+
+        $(document).ready(function() {
+
+            $("#exec").click(
+                    function() {
+                       getXYCoord();
+                    });
+        });
     </script>
     <style type="text/css">
         #urbis_map {
