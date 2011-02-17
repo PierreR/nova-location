@@ -165,7 +165,7 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 				"xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
 				"<soap:Body>" +
                         // TODO CHECK THIS TO MAKE IT WORK I HAVE TO ADD /xsd ?
-				"<" + method + " xmlns=\"" + ns + "/xsd" +"\">" +
+				"<" + method + " xmlns=\"" + ns +"\">" +
 				parameters.toXml() +
 				"</" + method + "></soap:Body></soap:Envelope>";
 	// send request
@@ -176,8 +176,8 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 		xmlHttp.setRequestHeader("Authorization", "Basic " + SOAPClient._toBase64(SOAPClient.userName + ":" + SOAPClient.password));
 	}
 	else
-		xmlHttp.open("POST", url, async);
-	var soapaction = ((ns.lastIndexOf("/") != ns.length - 1) ? ns + "/" : ns) + method;
+		xmlHttp.open("POST", url + "/soap", async);
+	var soapaction = ((ns.lastIndexOf("/") != ns.length - 1) ? ns + "/" : ns) + "ISearchAddressService/" + method;
 	xmlHttp.setRequestHeader("SOAPAction", soapaction);
 	xmlHttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
 	if(async) 

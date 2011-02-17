@@ -17,10 +17,10 @@
         function getXYCoord() {
             console.log("About to send a post request to the server");
             var pl = new SOAPClientParameters(),
-                url = "http://localhost:8000/gislb/WSGeoLoc/Localization";
-            pl.add("language", "fr");
-            pl.add("address", address)
-            SOAPClient.invoke(url, "getXYCoord", pl, true, _brugwsCallBack);
+                url = "http://localhost:8000/brugis/SearchAddress/service.svc";
+            pl.add("municipality", "Anderlecht");
+            pl.add("streetFilter", "?");
+            SOAPClient.invoke(url, "GetStreets", pl, true, _brugwsCallBack);
 
         }
         function _brugwsCallBack(data) {
